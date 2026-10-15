@@ -1,1 +1,414 @@
+Ecco il codice HTML completo e aggiornato. Puoi copiarlo direttamente e incollarlo su GitHub (ad esempio nel file index.html per pubblicarlo su GitHub Pages):
 
+HTML
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#ffe875">
+<title>Per Chloe 🌻🩵</title>
+<style>
+:root {
+  --yellow: #fcd535;
+  --yellow-light: #fff2a3;
+  --yellow-card: #fffbe6;
+  --gold: #b38000;
+  --blue: #4db8ff;
+  --blue-light: #e6f5ff;
+  --ink: #4a3828;
+  --shadow: 0 12px 35px rgba(212, 160, 23, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(160deg, #fff9e6 0%, #ffe875 50%, #ffd000 100%);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+#rain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.fall {
+  position: absolute;
+  top: -50px;
+  animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(115vh) rotate(360deg);
+    opacity: 0.1;
+  }
+}
+
+main {
+  width: min(90%, 420px);
+  margin: 20px auto;
+  padding: 28px 22px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid #ffffff;
+  border-radius: 32px;
+  box-shadow: var(--shadow);
+  position: relative;
+  z-index: 1;
+}
+
+.page {
+  display: none;
+  text-align: center;
+  animation: appear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+h1 {
+  font-size: clamp(1.8rem, 7.5vw, 2.3rem);
+  line-height: 1.15;
+  margin: 14px 0 8px 0;
+  color: #3b2c1e;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin: 10px 0;
+  color: #3b2c1e;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 1.02rem;
+  margin: 10px 0;
+}
+
+.small {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  opacity: 0.75;
+}
+
+.flower {
+  font-size: 72px;
+  display: inline-block;
+  margin: 8px 0;
+  animation: sway 3s infinite ease-in-out;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.08));
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-5deg) scale(1); }
+  50% { transform: rotate(8deg) scale(1.08); }
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.btn {
+  width: 100%;
+  display: block;
+  margin: 12px 0;
+  padding: 16px 14px;
+  border: 0;
+  border-radius: 20px;
+  background: var(--yellow);
+  color: #4a3400;
+  font-size: 1.05rem;
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(252, 213, 53, 0.45);
+  transition: transform 0.15s ease, background-color 0.2s;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn.alt {
+  background: var(--blue-light);
+  color: #1a5b82;
+  box-shadow: 0 6px 18px rgba(77, 184, 255, 0.25);
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 50px;
+  background: var(--yellow-light);
+  color: #6b4d00;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.letter {
+  text-align: left;
+  white-space: pre-line;
+  line-height: 1.7;
+  padding: 20px;
+  border-radius: 22px;
+  background: var(--yellow-card);
+  border: 2px solid #ffe89e;
+  font-size: 0.96rem;
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 15px 0;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);
+}
+
+#feedback, #escapeMessage {
+  min-height: 36px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #2b6285;
+  margin-top: 10px;
+}
+
+.btn-wrapper {
+  position: relative;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#noBtn {
+  position: relative;
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+
+.music-box {
+  background: #f0f9ff;
+  border: 2px dashed #b3e0ff;
+  border-radius: 18px;
+  padding: 12px;
+  margin: 12px 0;
+  font-weight: 600;
+  color: #1e5a80;
+}
+
+footer {
+  text-align: center;
+  padding: 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #5c4728;
+  opacity: 0.8;
+}
+</style>
+</head>
+<body>
+
+<div id="rain" aria-hidden="true"></div>
+
+<main>
+  <!-- PAGINA 0: HOME -->
+  <section class="page active" id="p0">
+    <span class="tag">UNA PICCOLA SORPRESA 🌻</span>
+    <div><span class="flower">🌻</span></div>
+    <p class="small">CREATO DA SALVATORE SOLO PER TE</p>
+    <h1>Ehi Chloe! 🩵</h1>
+    <p>Ho preparato una sorpresina speciale per te.<br>Mettiti comoda e premi qui sotto!</p>
+    <button class="btn" onclick="go(1)">Apri la sorpresa 🌼</button>
+    <p class="small">18 settembre 2026 · Il nostro inizio 🩵</p>
+  </section>
+
+  <!-- PAGINA 1: QUIZ RAGIONE -->
+  <section class="page" id="p1">
+    <span class="flower">🤨</span>
+    <h2>Domandina fondamentale...</h2>
+    <p>Chi è che ha SEMPRE ragione tra noi due?</p>
+    <button class="btn" onclick="say('Tu sei convintissima di sì, ma io ho fortissimi dubbi! 😂🩵', 2)">
+      Chloe, senza ombra di dubbio! 😌
+    </button>
+    <button class="btn alt" onclick="say('FINALMENTE! Un applauso all\'onestà! 😂💙', 2)">
+      Salvatore, ovviamente 😎
+    </button>
+    <p id="feedback" aria-live="polite"></p>
+  </section>
+
+  <!-- PAGINA 2: PULSANTE SFUGGENTE -->
+  <section class="page" id="p2">
+    <span class="flower">🏃‍♀️🩵</span>
+    <h2>Sei proprio sicurissima?</h2>
+    <p>Ammetti almeno per una volta che ho ragione io! 👀</p>
+    <button class="btn" onclick="go(3)">Va bene dai, hai ragione tu 😇</button>
+    <div class="btn-wrapper">
+      <button class="btn alt" id="noBtn">NO, HO RAGIONE IO! 😤</button>
+    </div>
+    <p id="escapeMessage" aria-live="polite">Prova a premere "NO"... se ci riesci! 😂🩵</p>
+  </section>
+
+  <!-- PAGINA 3: MUSICA -->
+  <section class="page" id="p3">
+    <span class="flower">🎵🌻</span>
+    <h2>La nostra playlist 🎶</h2>
+    <div class="music-box">
+      883 🎧 Modà 🎧 Arctic Monkeys
+    </div>
+    <p>Ognuno ha i suoi gusti musicali, ma alla fine hai iniziato ad ascoltare anche la mia musica... e questa cosa mi fa troppo piacere! 🩵</p>
+    <p>Sono proprio queste piccole attenzioni che rendono speciale ogni momento insieme.</p>
+    <button class="btn" onclick="go(4)">C'è un'altra sorpresa 💌</button>
+  </section>
+
+  <!-- PAGINA 4: INTRO LETTERA -->
+  <section class="page" id="p4">
+    <span class="flower">🌻🩵</span>
+    <h2>Una messaggino per te</h2>
+    <p>Ok, adesso basta scherzi e niente più sfide su chi ha ragione (anche se vinco io) 😂</p>
+    <p>Ci tenevo a scriverti una cosina con il cuore 🩵</p>
+    <button class="btn" onclick="go(5)">Leggi il messaggio 💌</button>
+  </section>
+
+  <!-- PAGINA 5: LETTERA GIOCOSA -->
+  <section class="page" id="p5">
+    <span class="tag">DA SALVATORE A CHLOE 🩵</span>
+    <h2>Buon primo mese! 🌻</h2>
+    <div class="letter">
+Ehi Chloe!
+
+Volevo approfittare di questo piccolo sito per festeggiare questo nostro primo mese insieme! 🩵
+
+Dal 18 settembre ad oggi il tempo è volato ed è stato un mese davvero fantastico.
+
+Mi fa morire dal ridere quando scherziamo e iniziamo a discutere per gioco su chi dei due abbia ragione — anche se sappiamo benissimo che tu pretendi di averla SEMPRE tu! 😂
+
+E ammetto che è bellissimo anche quando ti metti ad ascoltare la musica che piace a me... sono quei dettagli super carini che mi fanno sempre sorridere.
+
+Sei una ragazza speciale: ami i girasoli, il giallo e riesci a rendere divertente e unica ogni giornata insieme 🌻💛
+
+Grazie per questo primo mese pieno di risate, battute e bei momenti. Spero sia solo il primo di una lunga serie di ricordi da collezionare insieme!
+
+Buon primo mese a noi! 🩵
+
+Il tuo complice,
+Salvatore 💙
+    </div>
+    <button class="btn" onclick="go(6); celebrate()">Ho un'ultima cosa per te! 🌻</button>
+  </section>
+
+  <!-- PAGINA 6: FINALE -->
+  <section class="page" id="p6">
+    <span class="flower">🌻🩵🌻</span>
+    <h1>Tutto per te, Chloe!</h1>
+    <p>Un girasole perché so che li adori 🌻<br>
+    Un tocco di giallo perché è il tuo colore 💛<br>
+    E questo piccolo sito per strapparti un sorriso 🩵</p>
+    <h2>Che sia solo l'inizio! 🥳</h2>
+    <p>Grazie per questo primo mese stupendo.<br>Pronta per tutti i prossimi? 🩵</p>
+    <button class="btn" onclick="celebrate()">Pioggia di girasoli e cuori! 🌻🩵</button>
+    <button class="btn alt" onclick="go(0)">Ricomincia da capo ↻</button>
+  </section>
+</main>
+
+<footer>Fatto con il cuore da Salvatore, per Chloe 🌻🩵</footer>
+
+<script>
+function go(n) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('p' + n).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function say(message, n) {
+  document.getElementById('feedback').textContent = message;
+  setTimeout(() => {
+    document.getElementById('feedback').textContent = '';
+    go(n);
+  }, 1600);
+}
+
+const noBtn = document.getElementById('noBtn');
+const escapeMessage = document.getElementById('escapeMessage');
+let attempts = 0;
+
+function escapeNo(e) {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  attempts++;
+  
+  if (attempts >= 4) {
+    noBtn.textContent = 'OK, MI ARRENDO! 😂';
+    noBtn.style.transform = 'none';
+    noBtn.onpointerenter = null;
+    noBtn.onclick = () => go(3);
+    escapeMessage.textContent = 'Il tasto NO si è arreso! Ora puoi continuare 😂🩵';
+    return;
+  }
+  
+  const dx = Math.round((Math.random() * 140) - 70);
+  const dy = Math.round((Math.random() * 80) - 40);
+  noBtn.style.transform = `translate(${dx}px, ${dy}px)`;
+  escapeMessage.textContent = 'AHAHAH! Non riesci a prenderlo! Riprova 😂🩵';
+}
+
+noBtn.addEventListener('pointerenter', escapeNo);
+noBtn.addEventListener('click', escapeNo);
+noBtn.addEventListener('touchstart', function(e) {
+  if (attempts < 4) {
+    escapeNo(e);
+  }
+}, { passive: false });
+
+function celebrate() {
+  const rain = document.getElementById('rain');
+  const symbols = ['🌻', '🩵', '💙', '✨', '🌼', '💛'];
+  
+  for (let i = 0; i < 60; i++) {
+    const el = document.createElement('span');
+    el.className = 'fall';
+    el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    el.style.left = Math.random() * 100 + '%';
+    el.style.animationDelay = (Math.random() * 2) + 's';
+    el.style.fontSize = (20 + Math.random() * 22) + 'px';
+    rain.appendChild(el);
+    
+    setTimeout(() => el.remove(), 6000);
+  }
+}
+</script>
+</body>
+</html>
