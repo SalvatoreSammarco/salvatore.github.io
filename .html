@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff5c9">
+<title>Per Chloe 🌻🩵</title>
+<style>
+:root {
+  --yellow:#f6cf4a;
+  --gold:#b98216;
+  --blue:#8bd3ff;
+  --cream:#fff9e9;
+  --ink:#614b36;
+}
+*{box-sizing:border-box}
+body {
+  margin:0; min-height:100vh; color:var(--ink);
+  font-family:system-ui,sans-serif;
+  background:linear-gradient(145deg,#fff9e8,#fff0c0,#fff7f4);
+  overflow-x:hidden;
+}
+main {
+  width:min(92%,440px); margin:24px auto;
+  padding:26px 21px; background:#ffffffed;
+  border:1px solid white; border-radius:28px;
+  box-shadow:0 15px 50px #c79c4c26;
+  position:relative; z-index:1;
+}
+.page{display:none;text-align:center;animation:appear .45s ease}
+.page.active{display:block}
+@keyframes appear {
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+h1{font-size:clamp(2rem,9vw,2.6rem);line-height:1.12;margin:15px 0}
+h2{font-size:1.5rem}
+p{line-height:1.8}
+.small{font-size:.8rem;letter-spacing:.04em;opacity:.7}
+.flower{font-size:76px;display:block;animation:sway 2.5s infinite ease-in-out}
+@keyframes sway{50%{transform:rotate(8deg) scale(1.06)}}
+button{font:inherit;cursor:pointer;touch-action:manipulation}
+.btn {
+  width:100%;display:block;margin:12px 0;padding:15px 13px;
+  border:0;border-radius:17px;background:var(--yellow);
+  color:#594319;font-weight:750;
+  box-shadow:0 5px 15px #d7ae4230;
+  transition:transform .18s;
+}
+.btn:active{transform:scale(.97)}
+.btn.alt{background:#e4f5ff;color:#28668b}
+.btn:focus-visible{outline:3px solid #367fa7;outline-offset:3px}
+.tag{display:inline-block;padding:7px 12px;border-radius:30px;background:#fff3c7;font-size:.8rem}
+.letter {
+  text-align:left;white-space:pre-line;line-height:1.9;
+  padding:19px;border-radius:18px;background:#fff8e9;
+  border:1px solid #f8e5a5;
+}
+#feedback,#escapeMessage{min-height:30px;font-weight:650}
+#noBtn{position:relative}
+#rain{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:4}
+.fall{position:absolute;top:-45px;animation:fall 4s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(380deg);opacity:.1}}
+footer{text-align:center;padding:10px;font-size:.78rem;opacity:.65}
+</style>
+</head>
+<body>
+<div id="rain" aria-hidden="true"></div>
+<main>
+
+<section class="page active" id="p0">
+  <span class="tag">UNA PICCOLA SORPRESA 🌻</span>
+  <span class="flower">🌻</span>
+  <p class="small">REALIZZATO CON AMORE DA SALVATORE</p>
+  <h1>Ehi Chloe! 🩵</h1>
+  <p>Ho preparato una cosina per te.<br>
+  Non puoi immaginare cosa ti aspetta...</p>
+  <button class="btn" onclick="go(1)">Apri la sorpresa 🌼</button>
+  <p class="small">18 settembre 2026 · il nostro inizio 🩵</p>
+</section>
+
+<section class="page" id="p1">
+  <span class="flower">🤨</span>
+  <h2>Domanda importantissima</h2>
+  <p>Chi ha sempre ragione tra noi due?</p>
+  <button class="btn" onclick="say('Tu sei convinta di sì, ma io non sono per niente d’accordo! 😂🩵',2)">
+    Chloe, senza dubbio 😌
+  </button>
+  <button class="btn alt" onclick="say('Finalmente qualcuno che riconosce la mia superiorità! 😂💙',2)">
+    Salvatore, ovviamente 😎
+  </button>
+  <p id="feedback" aria-live="polite"></p>
+</section>
+
+<section class="page" id="p2">
+  <span class="flower">🏃‍♀️💙</span>
+  <h2>Ma sei proprio sicura?</h2>
+  <p>Ammetti almeno una volta che ho ragione io? 👀</p>
+  <button class="btn" onclick="go(3)">Va bene, hai ragione tu 😇</button>
+  <button class="btn alt" id="noBtn">NO, HO RAGIONE IO! 😤</button>
+  <p id="escapeMessage" aria-live="polite">Prova a premere NO... se ci riesci 😂🩵</p>
+</section>
+
+<section class="page" id="p3">
+  <span class="flower">🎵🌻</span>
+  <h2>Una cosa che mi piace di noi</h2>
+  <p>883, Modà, Arctic Monkeys... 🎶</p>
+  <p>Tu hai i tuoi gusti musicali, io ho i miei.
+  E poi hai iniziato ad ascoltare anche la musica che piace a me. 🩵</p>
+  <p>Forse è una piccola cosa, ma sono proprio queste attenzioni
+  a rendere speciale il tempo passato insieme.</p>
+  <button class="btn" onclick="go(4)">C'è ancora una sorpresa 💌</button>
+</section>
+
+<section class="page" id="p4">
+  <span class="flower">🌻💙</span>
+  <h2>Una lettera per te, Chloe</h2>
+  <p>Questa volta niente scherzi e niente discussioni su chi abbia ragione.</p>
+  <p>Solo io che voglio dirti una cosa con il cuore. 🩵</p>
+  <button class="btn" onclick="go(5)">Leggi la letterina 💌</button>
+</section>
+
+<section class="page" id="p5">
+  <span class="tag">DA SALVATORE A CHLOE 🩵</span>
+  <h2>Buon primo mese, amore mio 🌻</h2>
+  <div class="letter">
+Amore mio,
+
+volevo approfittare di questo piccolo regalo per ringraziarti di tutto il bel tempo che abbiamo passato insieme. 🩵
+
+Dal 18 settembre sei diventata una persona speciale nella mia vita, e sono davvero felice di poter condividere questi momenti con te.
+
+Mi piace quando scherziamo, quando discutiamo per gioco su chi abbia sempre ragione — anche se sappiamo entrambi che tu non puoi avere ragione SEMPRE 😂 — e quando riusciamo a farci sorridere a vicenda.
+
+Mi piace anche che tu abbia iniziato ad ascoltare la musica che piace a me. Sono piccole attenzioni che mi fanno sorridere e che rendono ancora più bello quello che stiamo vivendo.
+
+Sei la mia Chloe, quella che ama i girasoli, il giallo e che riesce a rendere speciali anche le cose semplici. 🌻💛
+
+Voglio ringraziarti per questo tempo bellissimo insieme. Spero davvero che tutto questo non finisca qui, ma che sia soltanto l'inizio di tanti altri momenti, risate, abbracci e ricordi da creare insieme.
+
+Non so cosa ci riserverà il futuro, ma so che sono felice di vivere questo presente con te.
+
+Grazie di esserci, Chloe. Grazie per questo primo mese e per ogni sorriso che mi hai regalato.
+
+Buon primo mese a noi, amore mio. 🩵
+
+Con affetto,
+il tuo Salvatore 💙
+  </div>
+  <button class="btn" onclick="go(6);celebrate()">Ho un'ultima cosa per te 🌻</button>
+</section>
+
+<section class="page" id="p6">
+  <span class="flower">🌻🩵🌻</span>
+  <h1>Per te, Chloe.</h1>
+  <p>Un girasole perché so che ti piacciono.<br>
+  Il giallo perché è il tuo colore.<br>
+  E questo piccolo sito perché volevo regalarti qualcosa di nostro.</p>
+  <h2>Che sia solo l'inizio. 🥹</h2>
+  <p>Grazie per tutto questo bel tempo insieme.<br>
+  Spero che la nostra storia continui ancora a lungo. 🩵</p>
+  <button class="btn" onclick="celebrate()">Una pioggia di girasoli e cuori! 🌻</button>
+  <button class="btn alt" onclick="go(0)">Ricomincia la sorpresa ↻</button>
+</section>
+
+</main>
+<footer>fatto da Salvatore, per Chloe 🌻🩵</footer>
+
+<script>
+function go(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('p'+n).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function say(message,n){
+  document.getElementById('feedback').textContent=message;
+  setTimeout(()=>go(n),1500);
+}
+
+const noBtn=document.getElementById('noBtn');
+const escapeMessage=document.getElementById('escapeMessage');
+let attempts=0;
+
+function escapeNo(e){
+  if(e){e.preventDefault();e.stopPropagation()}
+  attempts++;
+  if(attempts>=4){
+    noBtn.textContent='OK, HO CAPITO 😂';
+    noBtn.style.transform='none';
+    noBtn.onpointerenter=null;
+    noBtn.onclick=()=>go(3);
+    escapeMessage.textContent='Il NO si è arreso! Ora puoi continuare 😂💙';
+    return;
+  }
+  const dx=Math.round(Math.random()*130-65);
+  const dy=Math.round(Math.random()*70-35);
+  noBtn.style.transform=`translate(${dx}px,${dy}px)`;
+  escapeMessage.textContent='AHAHAH! Il NO è scappato! Riprova 😂🩵';
+}
+noBtn.addEventListener('pointerenter',escapeNo);
+noBtn.addEventListener('click',escapeNo);
+noBtn.addEventListener('touchstart',e=>{
+  if(attempts<4)escapeNo(e);
+},{passive:false});
+
+function celebrate(){
+  const rain=document.getElementById('rain');
+  const symbols=['🌻','🩵','💙','✨','🌼','🩵'];
+  for(let i=0;i<55;i++){
+    const el=document.createElement('span');
+    el.className='fall';
+    el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    el.style.left=Math.random()*100+'%';
+    el.style.animationDelay=Math.random()*1.8+'s';
+    el.style.fontSize=(18+Math.random()*24)+'px';
+    rain.appendChild(el);
+    setTimeout(()=>el.remove(),6000);
+  }
+}
+</script>
+</body>
+</html>
