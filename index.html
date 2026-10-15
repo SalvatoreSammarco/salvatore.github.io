@@ -10,7 +10,6 @@
   --yellow: #fcd535;
   --yellow-light: #fff2a3;
   --yellow-card: #fffbe6;
-  --gold: #b38000;
   --blue: #4db8ff;
   --blue-light: #e6f5ff;
   --ink: #4a3828;
@@ -203,16 +202,18 @@ button {
 
 .btn-wrapper {
   position: relative;
-  min-height: 60px;
+  min-height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 12px 0;
 }
 
 #noBtn {
   position: relative;
   transition: transform 0.15s ease-out;
   will-change: transform;
+  margin: 0 !important;
 }
 
 .music-box {
@@ -292,7 +293,7 @@ footer {
   <!-- PAGINA 4: INTRO LETTERA -->
   <section class="page" id="p4">
     <span class="flower">🌻🩵</span>
-    <h2>Una messaggino per te</h2>
+    <h2>Un messaggino per te</h2>
     <p>Ok, adesso basta scherzi e niente più sfide su chi ha ragione (anche se vinco io) 😂</p>
     <p>Ci tenevo a scriverti una cosina con il cuore 🩵</p>
     <button class="btn" onclick="go(5)">Leggi il messaggio 💌</button>
@@ -376,8 +377,8 @@ function escapeNo(e) {
     return;
   }
   
-  const dx = Math.round((Math.random() * 140) - 70);
-  const dy = Math.round((Math.random() * 80) - 40);
+  const dx = Math.round((Math.random() * 120) - 60);
+  const dy = Math.round((Math.random() * 60) - 30);
   noBtn.style.transform = `translate(${dx}px, ${dy}px)`;
   escapeMessage.textContent = 'AHAHAH! Non riesci a prenderlo! Riprova 😂🩵';
 }
